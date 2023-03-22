@@ -1,0 +1,2 @@
+TODO:
+- Revize EFSummary page to display 'pills' in stacked column form. Or change to flex and align center. 
