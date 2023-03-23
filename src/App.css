@@ -60,7 +60,7 @@ html{
 
 .container.empathy{
   top: 90px;
-  height: calc(100vh - 110px);
+  height: calc(100vh - 120px);
   justify-content: flex-start;
 }
 

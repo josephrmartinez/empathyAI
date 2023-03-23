@@ -117,7 +117,7 @@ export default function EmpathyForm(props) {
                 <div className={`listDiv ${props.params.section}`} style={{ cursor: "default" }}>{props.params.word}</div>
             </div>}
             {isLastStep && <div>
-                <div className='text-sm mb-4'>RECEIVE EMPATHY</div>
+                <div className='text-sm mb-4 tracking-wide'>RECEIVE EMPATHY</div>
                 <div className='my-4 w-[180px]'><Select options={AIListeners} placeholder={"from..."} onChange={handleSelectAI} isSearchable={false} /></div>
             </div>}
             <div className="h-full w-full max-w-screen-sm grid grid-rows-[60px,1fr,80px]">
