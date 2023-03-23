@@ -19,5 +19,5 @@ const firebaseApp = initializeApp(firebaseConfig);
 const analytics = getAnalytics(firebaseApp);
 export const db = getFirestore(firebaseApp);
 
-const docRef = doc(db, 'api-keys', 'openai-api-key')
-export const docSnap = await getDoc(docRef)
+// const docRef = doc(db, 'api-keys', 'openai-api-key')
+// export const docSnap = await getDoc(docRef)

@@ -10,9 +10,12 @@ import { ReactComponent as RightIcon } from '../../assets/icons/angle-right-soli
 import { ReactComponent as LeftIcon } from '../../assets/icons/angle-left-solid.svg'
 import openai, { Configuration, OpenAIApi } from "openai";
 import { db } from "../../firebase"
-import { docSnap } from "../../firebase"
+// import { docSnap } from "../../firebase"
+import { getDoc, doc } from "firebase/firestore"
 
 
+const docRef = doc(db, 'api-keys', 'openai-api-key')
+const docSnap = await getDoc(docRef)
 const key = docSnap.data()
 const openaiKey = key.key
 
