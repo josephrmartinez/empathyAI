@@ -57,7 +57,8 @@ function App() {
           placeholder=''
           value={searchText}
           onChange={(e) => setSearchText(e.target.value.toLowerCase())}
-            className="border rounded-full w-24 indent-2"></input>
+            className="border rounded-full w-24 indent-2"
+            style={{borderColor: 'rgb(212 212 212)'}}></input>
           <SearchIcon className="SearchIcon"/>
         </div>
       </div>

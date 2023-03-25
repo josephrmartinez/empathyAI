@@ -1,2 +1,8 @@
 TODO:
+- reduce border thickness on search area
+- implement openAI api query on add term
+
+
+
+
 - Fix height of AI empathy dialogue. Display scroll bars by default.
