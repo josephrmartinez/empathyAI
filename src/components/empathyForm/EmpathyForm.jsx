@@ -17,7 +17,7 @@ import { getDoc, doc } from "firebase/firestore"
 const docRef = doc(db, 'api-keys', 'openai-api-key')
 const docSnap = await getDoc(docRef)
 const key = docSnap.data()
-const openaiKey = key.key
+export const openaiKey = key.key
 
 const AIListeners = [
     { value: "Tom", label: "Tom" },

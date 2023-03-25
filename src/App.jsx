@@ -8,6 +8,11 @@ import { complaintsList } from './assets/complaintsList'
 import DivColumn from './components/DivColumn'
 import { ReactComponent as SearchIcon } from './assets/icons/search.svg';
 import { ReactComponent as InfoIcon } from './assets/icons/info-circle.svg';
+import generateComplaintObject from './utilities/generateComplaintObject'
+import generateFeelingObject from './utilities/generateFeelingObject'
+import generateComplaintPrompt from './utilities/generateComplaintPrompt'
+import generateFeelingPrompt from './utilities/generateFeelingPrompt'
+import callAPI from './utilities/callAPI'
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -30,16 +35,27 @@ function App() {
   function handleSelectInputChange(value) {
     setSection(value.value)
     setSearchParams({ section: value.value })
-
   }
 
-  function handleAddWordClick() {
+  function toggleAddWordBox() {
     setAddWord(!addWord)
+  }
+
+  async function handleAddWord() {
+    const dataObj = section === "complaints" ? generateComplaintObject(userInput) : generateFeelingObject(userInput)
+    const promptText = section === "complaints" ? generateComplaintPrompt() : generateFeelingPrompt()
+    const prompt = promptText + " " + JSON.stringify(dataObj)
+    console.log(`${prompt}`)
+    const response = await callAPI(prompt)
+    console.log(response)
+    setUserInput("")
+    setAddWord(false)
   }
 
   function handleKeyDown(e) {
     if (e.keyCode === 13 || e.keyCode === 9) {
-      handleAddWordClick()
+      handleAddWord()
+      toggleAddWordBox()
     }
   }
 
@@ -68,7 +84,7 @@ function App() {
           searchText={searchText}
           divClass={section}
           searchParams={searchParams}
-          handleAddWordClick={handleAddWordClick}
+          toggleAddWordBox={toggleAddWordBox}
            />
       </div>
       {infoBox &&
@@ -90,7 +106,7 @@ function App() {
               <div className='text-sm text-slate-800'>use another word: </div>
             </div>
             <input className='border-b-4 w-28 outline-none text-center' style={{ borderColor: section === "feelings" ? "#699F96" : "#043D66" }} onKeyDown={handleKeyDown} type="text" autoFocus value={userInput} onChange={handleChangeUserInput}></input>
-            <div className='mt-6 px-5 py-2 bg-gray-50 border rounded cursor-pointer'  onClick={()=> setAddWord(!addWord)}><div className="text-slate-800 text-sm" >add</div></div>
+            <div className='mt-6 px-5 py-2 bg-gray-50 border rounded cursor-pointer'  onClick={handleAddWord}><div className="text-slate-800 text-sm" >add</div></div>
 
           </div>
         </div>
