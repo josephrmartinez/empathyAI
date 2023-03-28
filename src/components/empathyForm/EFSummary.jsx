@@ -41,6 +41,7 @@ export default function EFSummary({ empathyResponse, complaint, feeling, initial
         }
         }, []);
 
+    console.log(selectedUnderlyingFeelings.length)
     
     return (
     <>

@@ -1,3 +1,6 @@
 TODO:
-- auto lowercase on all input fields
+- make plus icon more visible
+- error handling: if user input is blank, delete user input. (add complaint/feeling word, add div to div grid)
+- error handling: during API call, if user input is not a feeling or complaint word, cancel operation
+- review pull request: require selection of one term (?)
 - Fix height of AI empathy dialogue. Display scroll bars by default.
