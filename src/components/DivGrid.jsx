@@ -14,10 +14,11 @@ export default function DivGrid({ words, section, bgColor, updateFields, handleD
   }
 
   function handleInputSubmit(e) {
-    words.push({ word: e.target.value, selected: true })
+    if (e.target.value.trim()) {
+      words.push({ word: e.target.value, selected: true })
+    }
     setUserInputValue("")
     setUserInputActive(!userInputActive)
-
   }
 
   function handleKeyDown(e) {
