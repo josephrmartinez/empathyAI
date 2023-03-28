@@ -14,11 +14,21 @@ export default function DivGrid({ words, section, bgColor, updateFields, handleD
   }
 
   function handleInputSubmit(e) {
-    if (e.target.value.trim()) {
-      words.push({ word: e.target.value, selected: true })
+    const inputVal = e.target.value.trim(); // Trim input value
+
+    if (inputVal.length === 0 || !/^[a-zA-Z\s]+$/.test(inputVal)) {
+      // If input value consists only of whitespace or input value contains non-alphabetic characters, skip ahead to clearing input field and toggling userInputActive
+      setUserInputValue("");
+      setUserInputActive(!userInputActive);
+      return;
     }
-    setUserInputValue("")
-    setUserInputActive(!userInputActive)
+
+    // Add new word to words array
+    words.push({ word: inputVal, selected: true });
+
+    // Clear input field and toggle userInputActive
+    setUserInputValue("");
+    setUserInputActive(!userInputActive);
   }
 
   function handleKeyDown(e) {

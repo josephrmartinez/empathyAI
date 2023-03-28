@@ -58,6 +58,9 @@ function App() {
   }
 
   async function handleAddWord() {
+    if (userInput.trim().length < 4 || !/^[a-zA-Z]+$/.test(userInput.trim())) {
+      return
+    }
     setIsFetching(true)
     const dataObj = section === "complaints" ? generateComplaintObject(userInput) : generateFeelingObject(userInput)
     const promptText = section === "complaints" ? generateComplaintPrompt() : generateFeelingPrompt()
