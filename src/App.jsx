@@ -96,7 +96,7 @@ function App() {
   }
 
   function handleChangeUserInput(e) {
-    setUserInput(e.target.value)
+    setUserInput(e.target.value.toLowerCase())
   }
   return (
     <div>
