@@ -31,16 +31,16 @@ const generateText = async (empathyString, AIpersona, updateFields, openaiKey) =
 
     let style;
     switch (AIpersona) {
-        case "Tom":
+        case "Charles":
             style = "Charles Bukowski"
             break;
-        case "Anita":
-            style = "a woman born in New Orleans in the 1940s"
+        case "Fannie":
+            style = "Fannie Flagg"
             break;
-        case "Roy":
+        case "Tom":
             style = "Tom Robbins"
             break;
-        case "Quinn":
+        case "Wallace":
             style = "David Foster Wallace"
             break;
     }
