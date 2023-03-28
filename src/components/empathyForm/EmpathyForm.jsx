@@ -20,10 +20,10 @@ const key = docSnap.data()
 export const openaiKey = key.key
 
 const AIListeners = [
+    { value: "Charles", label: "Charles" },
+    { value: "Fannie", label: "Fannie" },
     { value: "Tom", label: "Tom" },
-    { value: "Anita", label: "Anita" },
-    { value: "Roy", label: "Roy" },
-    { value: "Quinn", label: "Quinn" }
+    { value: "Wallace", label: "Wallace" }
     ]
 
 const generateText = async (empathyString, AIpersona, updateFields, openaiKey) => {

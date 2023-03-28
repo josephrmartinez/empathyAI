@@ -19,7 +19,7 @@ export default function EFEmpathyAI({ empathyResponse }) {
           {empathyResponse === "" && "select listener to receive response"}
           {empathyResponse === "Listening..." ? (
               <div className="flex justify-center items-center h-full">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+                  <div className="loader"></div>
               </div>
           ) : formattedResponse.map((sentence, i) => (
               <div className="text-left" key={i}>
