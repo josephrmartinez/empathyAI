@@ -113,7 +113,7 @@ export default function EmpathyForm(props) {
     };
     
     return (
-        <div className='container empathy'>
+        <div className='empathyContainer'>
             {!isLastStep && <div>
                 <div className='text-sm'>{props.params.section == "feelings" ? "I'M FEELING" : "THEY'RE BEING"}</div>
                 <div className={`listDiv ${props.params.section}`} style={{ cursor: "default" }}>{props.params.word}</div>

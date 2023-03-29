@@ -1,5 +1,5 @@
 TODO:
 - create ability to exit out of add word box without entering a value
-
+- refine ai prompt to return ONLY initial feelings that are actually victim verbs
 - review pull request: require selection of one term (?)
 - Fix height of AI empathy dialogue. Display scroll bars by default.

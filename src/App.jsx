@@ -117,7 +117,7 @@ function App() {
           <SearchIcon className="SearchIcon"/>
         </div>
       </div>
-      <div className='container'>
+      <div className='relative top-20 flex flex-col justify-center items-center'>
         <DivColumn
           wordList={section === "feelings" ? feelingsList : complaintsList}
           searchText={searchText}
