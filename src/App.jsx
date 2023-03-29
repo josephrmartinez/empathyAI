@@ -57,6 +57,11 @@ function App() {
     setAddWord(!addWord)
   }
 
+  function closeAddWordBox() {
+    setUserInput("")
+    setAddWord(false)
+  }
+
   async function handleAddWord() {
     if (userInput.trim().length < 4 || !/^[a-zA-Z]+$/.test(userInput.trim())) {
       return
@@ -95,6 +100,9 @@ function App() {
   function handleKeyDown(e) {
     if (e.keyCode === 13 || e.keyCode === 9) {
       handleAddWord()
+    }
+    if (e.keyCode === 27) {
+      closeAddWordBox()
     }
   }
 
@@ -146,12 +154,13 @@ function App() {
             </div>
             {!isFetching && 
               <>
-            <input className='border-b-4 w-28 outline-none text-center' style={{ borderColor: section === "feelings" ? "#699F96" : "#043D66" }} onKeyDown={handleKeyDown} type="text" autoFocus value={userInput} onChange={handleChangeUserInput}></input>
-            <div className='w-20 mt-6  h-10 py-2 bg-gray-50 border rounded cursor-pointer' onClick={handleAddWord}><div className="text-slate-800 text-sm" >add</div></div>
+            <input className='mb-8 border-b-4 w-28 outline-none text-center' style={{ borderColor: section === "feelings" ? "#699F96" : "#043D66" }} onKeyDown={handleKeyDown} type="text" autoFocus value={userInput} onChange={handleChangeUserInput}></input>
+              <div className='w-20 mt-6  h-10 py-2 bg-gray-50 border rounded cursor-pointer' onClick={handleAddWord}><div className="text-slate-800 text-sm" >add</div></div>
+              <div className='absolute bottom-8 text-sm' style={{color: 'gray'}} onClick={closeAddWordBox}>close</div>
             </>}
             {isFetching &&
             <>  
-            <input readOnly className='border-b-4 w-28 outline-none text-center' style={{ borderColor: section === "feelings" ? "#699F96" : "#043D66" }} type="text" autoFocus value={userInput}></input>
+            <input readOnly className='mb-8 border-b-4 w-28 outline-none text-center' style={{ borderColor: section === "feelings" ? "#699F96" : "#043D66" }} type="text" autoFocus value={userInput}></input>
             <div className='w-20 mt-7 mx-auto py-3 bg-gray-50  flex justify-center'><div className='loader' ></div></div>
           </>
           }
