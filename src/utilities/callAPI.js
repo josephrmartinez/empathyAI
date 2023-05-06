@@ -1,11 +1,10 @@
-import { openaiKey } from "../components/empathyForm/EmpathyForm";
 import openai, { Configuration, OpenAIApi } from "openai";
 
-
+const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
 export default async function callAPI(prompt) {
     const configuration = new Configuration({
-            apiKey: openaiKey,
+            apiKey: apiKey,
             headers: {
                 "User-Agent": "NVCempathyAI"
             }

@@ -9,14 +9,16 @@ import Select from 'react-select'
 import { ReactComponent as RightIcon } from '../../assets/icons/angle-right-solid.svg'
 import { ReactComponent as LeftIcon } from '../../assets/icons/angle-left-solid.svg'
 import openai, { Configuration, OpenAIApi } from "openai";
-import { db } from "../../firebase"
-import { getDoc, doc } from "firebase/firestore"
+// import { db } from "../../firebase"
+// import { getDoc, doc } from "firebase/firestore"
 
 
-const docRef = doc(db, 'api-keys', 'openai-api-key')
-const docSnap = await getDoc(docRef)
-const key = docSnap.data()
-export const openaiKey = key.key
+// const docRef = doc(db, 'api-keys', 'openai-api-key')
+// const docSnap = await getDoc(docRef)
+// const key = docSnap.data()
+// export const openaiKey = key.key
+
+const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
 const AIListeners = [
     { value: "Charles", label: "Charles" },
@@ -25,7 +27,7 @@ const AIListeners = [
     { value: "Wallace", label: "Wallace" }
     ]
 
-const generateText = async (empathyString, AIpersona, updateFields, openaiKey) => {
+const generateText = async (empathyString, AIpersona, updateFields, apiKey) => {
     updateFields({ empathyResponse: "Listening..." });
 
     let style;
@@ -45,7 +47,7 @@ const generateText = async (empathyString, AIpersona, updateFields, openaiKey) =
     }
 
     const configuration = new Configuration({
-        apiKey: openaiKey,
+        apiKey: apiKey,
         headers: {
             "User-Agent": "NVCempathyAI"
         }
@@ -69,7 +71,7 @@ export default function EmpathyForm(props) {
     function handleSelectAI(value) {
         const AIpersona = value.value
         const empathyString = JSON.stringify(data.empathyString)
-        generateText(empathyString, AIpersona, updateFields, openaiKey );
+        generateText(empathyString, AIpersona, updateFields, apiKey );
     }
 
     function updateFields(fields) {
